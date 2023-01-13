@@ -1,6 +1,6 @@
-const util = require("../modules/util");
-const message = require("../modules/responseMessage");
-const statusCode = require("../modules/statusCode");
+const util = require("../common/util");
+const message = require("../common/responseMessage");
+const statusCode = require("../common/statusCode");
 
 tokenValidCheck = (req, res, next) => {
     console.log("token 유효성 검사 middleware");

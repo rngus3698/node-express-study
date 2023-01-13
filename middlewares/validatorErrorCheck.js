@@ -1,5 +1,5 @@
 const { validationResult } = require("express-validator");
-const statusCode = require("../modules/statusCode");
+const statusCode = require("../common/statusCode");
 
 /**
  * 유효성 검사 실패 middleware

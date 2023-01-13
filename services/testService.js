@@ -12,7 +12,7 @@ testService = {
          */
 
         const testmodel = await testModel.select();
-
+        console.log("testModel : ", testmodel)
         /**
          * value : 현재요소
          * index : 요소의 인덱스

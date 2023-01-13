@@ -1,4 +1,4 @@
-const getConnection = require("../modules/db");
+const getConnection = require("../common/db");
 
 /**
  *

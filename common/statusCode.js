@@ -1,4 +1,4 @@
-// modules/statusCode.ts
+// common/statusCode.ts
 statusCode = {
     OK: 200,
     CREATED: 201,

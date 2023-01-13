@@ -3,6 +3,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+require('dotenv').config();
 
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
@@ -16,13 +17,28 @@ const cors = require('cors');
 
 const app = express();
 
+console.log(process.env.NODE_ENV);
+/**
+ * morgan이 지원하는 로그 포맷
+ * default
+ * short
+ * tiny
+ * dev
+ */
+if (process.env.NODE_ENV === 'prod') {
+  app.use(logger('dev'));
+  console.log = () => {}; // console.log 빈 함수로 만들어 애플리케이션 전체에서 아무 것도 인쇄되지 않게 설정
+} else {
+  app.use(logger('tiny'));
+}
+
 app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
