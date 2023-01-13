@@ -1,5 +1,5 @@
 const express = require('express');
-const eventEmitter = require("../event/event");
+const Event = require("../event/event");
 const router = express.Router();
 
 /**
@@ -8,13 +8,13 @@ const router = express.Router();
 router.get("/test", (req, res) => {
     res.send("event 함수 테스트");
     //  이벤트 강제 발생
-    eventEmitter.eventTest.emit("test", "aaaaaaaaa");
+    Event.eventTest.emit("test", "aaaaaaaaa");
 
     //  문자전송 이벤트
-    eventEmitter.smssend.emit("smssend", {"phone": "01066868286", "msg": "smesend event"});
+    Event.smsSend.emit("smssend", {"phone": "01066868286", "msg": "smesend event"});
 
     //  모든 이벤트 핸들러 제거
-    eventEmitter.smssend.removeAllListeners();
+    Event.smsSend.removeAllListeners();
 
 })
 
