@@ -1,4 +1,4 @@
-
+console.log("testControllers.js");
 // import util from "../common/util";
 // import responseMessage from "../common/responseMessage";
 // import statusCode from "../common/statusCode";
@@ -7,7 +7,6 @@ const util = require("../common/util");
 const message = require("../common/responseMessage");
 const statusCode = require("../common/statusCode");
 const functionalProgramming = require("../common/functionalProgramming");
-const callback = require("../common/callback");
 const firesbaseAppPushSend = require("../common/firebaseAppPushSend");
 const testService = require("../services/testService");
 

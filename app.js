@@ -1,9 +1,22 @@
+console.log("app.js");
+
+const __DEV__ = true;
+if (__DEV__ === true) {
+  // 개발환경
+  console.log("개발환경");
+  require('dotenv').config({path: "./common/.env.dev"});
+} else {
+  // 운영환경
+  console.log("운영환경");
+  require('dotenv').config({path: "./common/.env.prod"});
+}
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-require('dotenv').config();
+const margan = require('morgan');
+const consoleLog = require("./common/debugging")
 
 const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
@@ -17,7 +30,15 @@ const cors = require('cors');
 
 const app = express();
 
-console.log(process.env.NODE_ENV);
+app.use(margan('default'));
+
+/**
+ * 함수명 : 설명
+ * set(name, value) : 서버 설정을 위한 함수
+ * get(name) : 설정된 서버 속성을 꺼내올 수 있다.
+ * use([path], function, [function ...]) : 미들웨어 함수 사용
+ * get([path], function) : 특정 경로로 요청 정보 처리
+ */
 /**
  * morgan이 지원하는 로그 포맷
  * default
@@ -25,14 +46,6 @@ console.log(process.env.NODE_ENV);
  * tiny
  * dev
  */
-if (process.env.NODE_ENV === 'prod') {
-  // 운영환경
-  app.use(logger('dev'));
-  console.log = () => {}; // console.log 빈 함수로 만들어 애플리케이션 전체에서 아무 것도 인쇄되지 않게 설정
-} else {
-  // 개발환경
-  app.use(logger('tiny'));
-}
 
 app.use(cors());
 
@@ -40,7 +53,6 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());

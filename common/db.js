@@ -1,5 +1,5 @@
+console.log("db.js");
 const mysql = require('mysql');
-require('dotenv').config();
 const {DB_HOST, DB_PORT, DB_USER, DB_PASSWORD, DB_DATABASE, DB_CONNECTIONSLIMIT} = process.env;
 
 

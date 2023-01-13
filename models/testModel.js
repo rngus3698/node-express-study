@@ -56,6 +56,9 @@ const getConnection = require("../common/db");
  */
 testModel = {
     select: async () => {
+        /**
+         * test 모델 조회 쿼리
+         */
         try {
 
             const connection = await getConnection();   // 미리 만들어논 connection 가져옴
