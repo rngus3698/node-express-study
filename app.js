@@ -26,9 +26,11 @@ console.log(process.env.NODE_ENV);
  * dev
  */
 if (process.env.NODE_ENV === 'prod') {
+  // 운영환경
   app.use(logger('dev'));
   console.log = () => {}; // console.log 빈 함수로 만들어 애플리케이션 전체에서 아무 것도 인쇄되지 않게 설정
 } else {
+  // 개발환경
   app.use(logger('tiny'));
 }
 
