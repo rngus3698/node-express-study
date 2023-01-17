@@ -1,4 +1,5 @@
 console.log("app.js");
+console.log("Time : ", Date.now());
 
 const __DEV__ = true;
 if (__DEV__ === true) {
@@ -16,10 +17,10 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const margan = require('morgan');
-const consoleLog = require("./common/debugging")
+const consoleLog = require("./common/consoleLog")
 
 const indexRouter = require('./routes');
-const usersRouter = require('./routes/users');
+const usersRouter = require('./routes/userRouter');
 const testRouter = require('./routes/testRouter');
 const eventRouter = require('./routes/event');
 // const admin = require('firebase-admin');  // firebase
@@ -90,7 +91,7 @@ app.use(tokenValidCheck);
 // })
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/user', usersRouter);
 app.use('/test', testRouter);
 app.use('/event', eventRouter);
 

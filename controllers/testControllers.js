@@ -3,7 +3,7 @@ console.log("testControllers.js");
 // import responseMessage from "../common/responseMessage";
 // import statusCode from "../common/statusCode";
 
-const util = require("../common/util");
+const util = require("../common/responseUtil");
 const message = require("../common/responseMessage");
 const statusCode = require("../common/statusCode");
 const functionalProgramming = require("../common/functionalProgramming");
@@ -12,16 +12,20 @@ const testService = require("../services/testService");
 
 testController = {
     test1: async (req, res, next) => {
-        // 조회 service
-        const testmodel = await testService.testSelect();
+        try{
+            // 조회 service
+            const testmodel = await testService.testSelect();
+            consoleLog("testmodel : ", testmodel);
+            // 수정 service
+            const testUpdate = await testService.testUpdate();
 
-        // 수정 service
-        const testUpdate = await testService.testUpdate();
-
-        // 응답 정보 포맷 모듈화
-        res.status(statusCode.OK).send(util.success(statusCode.OK, message.CREATE_POST_SUCCESS, testmodel));
-        // res.status(statusCode.statusCode.CREATED).send(util.util.success(statusCode.statusCode.OK, responseMessage.message.CREATE_POST_SUCCESS, data));
-
+            // 응답 정보 포맷 모듈화
+            res.status(statusCode.OK).send(util.success(statusCode.OK, message.CREATE_POST_SUCCESS, testmodel));
+            // res.status(statusCode.statusCode.CREATED).send(util.util.success(statusCode.statusCode.OK, responseMessage.message.CREATE_POST_SUCCESS, data));
+        } catch (err) {
+            consoleLog("err : ", err.message);
+            res.status(statusCode.INTERNAL_SERVER_ERROR).send(util.fail(statusCode.INTERNAL_SERVER_ERROR, message.INTERNAL_SERVER_ERROR));
+        }
 
         /*
         // console.log("path : ", req.path)

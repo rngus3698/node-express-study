@@ -1,5 +1,6 @@
 const testModel = require("../models/testModel");
 const {NODE_ENV} = process.env;
+console.log("testService");
 
 testService = {
     /**
@@ -43,6 +44,10 @@ testService = {
 
         // testUpdate에서 선언했던 transaction commit 및 release
         const testUpdate2 = await testModel.update2(testUpdate.connection);
+
+        let err = new Error("err hi")
+        err.name = "testError"
+        throw err;
 
         return true;
     }

@@ -14,7 +14,7 @@ router.get("/test", (req, res) => {
     Event.smsSend.emit("smssend", {"phone": "01066868286", "msg": "smesend event"});
 
     //  모든 이벤트 핸들러 제거
-    Event.smsSend.removeAllListeners();
+    Event.removeAllListeners();
 
 })
 

@@ -1,4 +1,4 @@
-const util = require("../common/util");
+const util = require("../common/responseUtil");
 const message = require("../common/responseMessage");
 const statusCode = require("../common/statusCode");
 

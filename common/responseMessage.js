@@ -13,6 +13,9 @@ message = {
 
     // 결제성공
     PAY_SUCCESS: '결제 성공',
+
+    // 로그인, 회원가입
+    LOGIN_SUCCESS: '로그인 성공',
 }
 
 module.exports = message;
